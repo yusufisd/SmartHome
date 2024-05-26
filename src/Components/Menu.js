@@ -4,8 +4,11 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Slider } from '@rneui/base';
 import { useNavigation } from '@react-navigation/native';
+import Entypo from '@expo/vector-icons/Entypo';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-const Menu = ({state,setState}) =>  {
+const Menu = ({state,setState,route}) =>  {
     const navigation = useNavigation();
 
 
@@ -16,7 +19,7 @@ const Menu = ({state,setState}) =>  {
             <TouchableOpacity onPress={() => navigation.navigate('HomePage')}>
                 <Ionicons name="chevron-back-outline" className="" size={24} color="black" />
             </TouchableOpacity>
-            <Text className="justify-center text-xl font-bold m-auto">{state.pageTitle}</Text>
+            <Text className="justify-center text-xl font-bold m-auto">{route}</Text>
         </View>
 
         {/* Page title boxes */}
@@ -26,7 +29,7 @@ const Menu = ({state,setState}) =>  {
                 {/* boxes */}
 
                 <View className="flex flex-col gap-2">
-                    <TouchableOpacity onPress={() => {setState({pageTitle:"Işıklandırma",lighting:1,ventilation:0,wifi:0,music:0})}}>
+                    <TouchableOpacity onPress={() => {setState({lighting:1,ventilation:0,wifi:0,music:0})}}>
                         <View className={ state.lighting ? 'bg-current-box rounded-lg items-center p-4 h-20 w-20 ' : 'bg-white rounded-lg items-center p-4 h-20 w-20'}>
                             <View className="p-3">
                                 <FontAwesome5 name="lightbulb" size={18} color={ state.lighting ? 'white': 'black'} />
@@ -40,10 +43,10 @@ const Menu = ({state,setState}) =>  {
 
 
                 <View className="flex flex-col gap-2 ">
-                    <TouchableOpacity onPress={() => {setState({pageTitle:"Havalandırma",lighting:0,ventilation:1,wifi:0,music:0})}}>
+                    <TouchableOpacity onPress={() => {setState({lighting:0,ventilation:1,wifi:0,music:0})}}>
                     <View className={ state.ventilation ? 'bg-current-box rounded-lg items-center p-4 h-20 w-20 ' : 'bg-white rounded-lg items-center p-4 h-20 w-20'}>
                         <View className="p-3">
-                            <FontAwesome5 name="lightbulb" size={18} color={ state.ventilation ? 'white': 'black'} />
+                            <Entypo name="air" size={24}  color={ state.ventilation ? 'white': 'black'} />
                         </View>
                     </View>
                     </TouchableOpacity>
@@ -53,10 +56,10 @@ const Menu = ({state,setState}) =>  {
                 </View>
 
                 <View className="flex flex-col gap-2">
-                    <TouchableOpacity onPress={() => {setState({pageTitle:"Wi-Fi",lighting:0,ventilation:0,wifi:1,music:0})}}>
+                    <TouchableOpacity onPress={() => {setState({lighting:0,ventilation:0,wifi:1,music:0})}}>
                         <View className={ state.wifi ? 'bg-current-box rounded-lg items-center p-4 h-20 w-20 ' : 'bg-white rounded-lg items-center p-4 h-20 w-20'}>
                             <View className="p-3">
-                                <FontAwesome5 name="lightbulb" size={18} color={ state.wifi ? 'white': 'black'} />
+                                <MaterialIcons name="router" size={24} color={ state.wifi ? 'white': 'black'}/>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -66,15 +69,15 @@ const Menu = ({state,setState}) =>  {
                 </View>
 
                 <View className="flex flex-col gap-2">
-                    <TouchableOpacity onPress={() => {setState({pageTitle:"Müzik",lighting:0,ventilation:0,wifi:0,music:1})}}>
+                    <TouchableOpacity onPress={() => {setState({lighting:0,ventilation:0,wifi:0,music:1})}}>
                         <View className={ state.music ? 'bg-current-box rounded-lg items-center p-4 h-20 w-20 ' : 'bg-white rounded-lg items-center p-4 h-20 w-20'}>
                             <View className="p-3">
-                                <FontAwesome5 name="lightbulb" size={18} color={ state.music ? 'white': 'black'} />
+                                <MaterialCommunityIcons name="curtains" size={24} color={ state.music ? 'white': 'black'} />
                             </View>
                         </View>
                     </TouchableOpacity>
                     <View className="justify-center flex flex-row">
-                        <Text className="">Müzik</Text>
+                        <Text className="">Perdeler</Text>
                     </View>
                 </View>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, SafeAreaView, ScrollView, Switch, TouchableOpacity } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -7,11 +7,12 @@ import Menu from '../Components/Menu';
 import Lighting from '../Components/Lighting';
 import Ventilation from '../Components/Ventilation';
 import Wifi from '../Components/Wifi';
+import Curtain from '../Components/Curtain';
 
-const QuciklyMenu = ({ navigation }) => {
+const QuciklyMenu = ({ navigation, route }) => {
 
     const [state, setState] = useState({
-        pageTitle: "Işıklandırma",
+        pageTitle: route.params,
         lighting: 1,
         ventilation: 0,
         wifi: 0,
@@ -19,12 +20,13 @@ const QuciklyMenu = ({ navigation }) => {
     });
     const { pageTitle, lighting, ventilation, wifi, music } = state;
 
+
     
 
   return (
     <View className="flex flex-col bg-blue-bg h-screen">
 
-        <Menu state={state} setState={setState}/>
+        <Menu state={state} setState={setState} route={route.params}/>
 
 
         {/* content */}
@@ -44,6 +46,12 @@ const QuciklyMenu = ({ navigation }) => {
             {/* ventilation */}
             <View className={wifi ? 'block' : 'hidden'}>
                 <Wifi />
+            </View>
+
+
+            {/* curtain */}
+            <View className={music ? 'block' : 'hidden'}>
+                <Curtain />
             </View>
 
 
